@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050912">
+<title>VynexaVPN | دنیای بدون مرز</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap');
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:"Vazirmatn",Arial,sans-serif;
+    color:#fff;
+    background:
+        radial-gradient(circle at 50% 0%,rgba(0,174,255,.18),transparent 35%),
+        linear-gradient(
+            180deg,
+            #020307 0%,
+            #040914 22%,
+            #07152a 42%,
+            #08345f 63%,
+            #138ed0 78%,
+            #8adfff 91%,
+            #fff 100%
+        );
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+body:before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background:
+        radial-gradient(circle at 15% 30%,rgba(0,200,255,.08),transparent 25%),
+        radial-gradient(circle at 85% 65%,rgba(0,100,255,.1),transparent 30%);
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button{
+    font-family:inherit;
+    cursor:pointer;
+}
+
+.container{
+    width:min(1120px,92%);
+    margin:auto;
+}
+
+.glass{
+    background:rgba(5,12,24,.63);
+    border:1px solid rgba(70,190,255,.22);
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.28),
+        inset 0 1px rgba(255,255,255,.05);
+    backdrop-filter:blur(22px);
+    -webkit-backdrop-filter:blur(22px);
+}
+
+/* HEADER */
+
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index:1000;
+    padding:12px 0;
+    background:rgba(2,5,11,.72);
+    border-bottom:1px solid rgba(80,190,255,.12);
+    backdrop-filter:blur(20px);
+}
+
+.nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:20px;
+    font-weight:900;
+}
+
+.logo-icon{
+    width:40px;
+    height:40px;
+    border-radius:14px;
+    display:grid;
+    place-items:center;
+    background:linear-gradient(135deg,#00c6ff,#1765ff);
+    box-shadow:0 0 28px rgba(0,170,255,.45);
+}
+
+.nav-button{
+    padding:10px 15px;
+    border-radius:13px;
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(70,190,255,.2);
+    font-size:12px;
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    text-align:center;
+    padding:120px 0 80px;
+}
+
+.hero-content{
+    max-width:850px;
+    margin:auto;
+}
+
+.badge{
+    display:inline-block;
+    padding:8px 15px;
+    border-radius:100px;
+    color:#7bdcff;
+    background:rgba(0,170,255,.09);
+    border:1px solid rgba(0,190,255,.25);
+    font-size:12px;
+    margin-bottom:22px;
+}
+
+.hero h1{
+    font-size:clamp(48px,10vw,90px);
+    font-weight:900;
+    letter-spacing:-3px;
+    background:linear-gradient(120deg,#fff,#8ce3ff,#159cff);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+}
+
+.hero h2{
+    font-size:clamp(25px,5vw,44px);
+    margin-top:18px;
+    font-weight:800;
+}
+
+.hero p{
+    color:#b9c9dc;
+    line-height:2;
+    font-size:14px;
+    max-width:680px;
+    margin:20px auto;
+}
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-top:28px;
+}
+
+.btn{
+    padding:14px 24px;
+    border-radius:15px;
+    font-weight:800;
+    border:0;
+}
+
+.btn-primary{
+    color:#fff;
+    background:linear-gradient(135deg,#00aaff,#2059ff);
+    box-shadow:0 0 30px rgba(0,150,255,.35);
+}
+
+.btn-secondary{
+    color:#dff6ff;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(100,200,255,.22);
+}
+
+/* SECTIONS */
+
+.section{
+    padding:80px 0;
+}
+
+.title{
+    text-align:center;
+    margin-bottom:38px;
+}
+
+.title small{
+    color:#67d7ff;
+    font-size:11px;
+}
+
+.title h2{
+    margin-top:8px;
+    font-size:clamp(28px,6vw,43px);
+    font-weight:900;
+}
+
+.title p{
+    color:#aebdcd;
+    font-size:13px;
+    margin-top:9px;
+}
+
+/* SERVICES */
+
+.services{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.service{
+    padding:24px;
+    border-radius:24px;
+    transition:.25s;
+}
+
+.service:hover{
+    transform:translateY(-5px);
+    border-color:rgba(70,200,255,.5);
+}
+
+.icon{
+    width:54px;
+    height:54px;
+    display:grid;
+    place-items:center;
+    border-radius:17px;
+    background:rgba(0,170,255,.1);
+    border:1px solid rgba(0,190,255,.23);
+    font-size:25px;
+    margin-bottom:17px;
+}
+
+.service h3{
+    font-size:20px;
+}
+
+.service-description{
+    color:#aebdcd;
+    font-size:12px;
+    line-height:1.9;
+    margin-top:7px;
+}
+
+.price{
+    color:#72ddff;
+    font-size:24px;
+    font-weight:900;
+    margin-top:18px;
+}
+
+.price span{
+    color:#8999ab;
+    font-size:10px;
+    font-weight:400;
+}
+
+.features{
+    margin-top:14px;
+}
+
+.feature{
+    color:#c5d4e3;
+    font-size:12px;
+    margin:7px 0;
+}
+
+.buy{
+    width:100%;
+    padding:13px;
+    margin-top:15px;
+    color:#fff;
+    border:0;
+    border-radius:13px;
+    background:linear-gradient(135deg,#009fff,#1859ff);
+    font-weight:800;
+}
+
+/* INFO */
+
+.info-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:16px;
+}
+
+.info{
+    padding:22px;
+    border-radius:21px;
+}
+
+.info-icon{
+    font-size:23px;
+    margin-bottom:10px;
+}
+
+.info h3{
+    font-size:15px;
+}
+
+.info p{
+    color:#aebdcd;
+    font-size:12px;
+    line-height:1.9;
+    margin-top:6px;
+}
+
+/* USER PANEL */
+
+.panel{
+    padding:24px;
+    border-radius:25px;
+}
+
+.panel-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:18px;
+}
+
+.panel-top h3{
+    font-size:19px;
+}
+
+.online{
+    color:#65f5b1;
+    background:rgba(0,255,150,.07);
+    border:1px solid rgba(0,255,150,.2);
+    border-radius:100px;
+    padding:6px 10px;
+    font-size:10px;
+}
+
+.panel-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+}
+
+.panel-item{
+    padding:17px 8px;
+    text-align:center;
+    border-radius:16px;
+    color:#d4e1ed;
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.07);
+}
+
+.panel-item:hover{
+    background:rgba(0,170,255,.1);
+    border-color:rgba(0,190,255,.25);
+}
+
+.panel-item div{
+    font-size:21px;
+    margin-bottom:7px;
+}
+
+.panel-item span{
+    font-size:11px;
+}
+
+/* REFERRAL */
+
+.referral{
+    padding:32px;
+    border-radius:27px;
+    text-align:center;
+}
+
+.referral h2{
+    font-size:29px;
+}
+
+.referral p{
+    max-width:650px;
+    margin:12px auto;
+    color:#b7c8d9;
+    line-height:2;
+    font-size:13px;
+}
+
+.ref-code{
+    display:inline-block;
+    margin-top:14px;
+    padding:12px 20px;
+    border-radius:13px;
+    border:1px dashed rgba(90,205,255,.35);
+    color:#72ddff;
+    background:rgba(0,0,0,.2);
+}
+
+/* FOOTER */
+
+footer{
+    padding:40px 0 110px;
+    text-align:center;
+    color:#7890a7;
+    font-size:11px;
+}
+
+/* TELEGRAM BUTTON */
+
+.telegram{
+    position:fixed;
+    z-index:2000;
+    bottom:15px;
+    left:50%;
+    transform:translateX(-50%);
+    width:min(390px,calc(100% - 28px));
+    padding:14px 20px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:9px;
+    border-radius:18px;
+    background:rgba(4,13,27,.9);
+    border:1px solid rgba(65,200,255,.45);
+    box-shadow:0 0 35px rgba(0,150,255,.28);
+    backdrop-filter:blur(18px);
+    font-weight:900;
+}
+
+.dot{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:#24caff;
+    box-shadow:0 0 14px #24caff;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+    .services{
+        grid-template-columns:1fr;
+    }
+
+    .info-grid{
+        grid-template-columns:1fr;
+    }
+
+    .panel-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:450px){
+
+    .hero{
+        padding-top:110px;
+    }
+
+    .buttons{
+        flex-direction:column;
+    }
+
+    .btn{
+        width:100%;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="container nav">
+
+        <a href="#home" class="logo">
+            <div class="logo-icon">V</div>
+            <span>VynexaVPN</span>
+        </a>
+
+        <a href="#services" class="nav-button">
+            سرویس‌ها
+        </a>
+
+    </div>
+</header>
+
+
+<main>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+    <div class="container hero-content">
+
+        <div class="badge">
+            ● VYNEXAVPN
+        </div>
+
+        <h1>VynexaVPN</h1>
+
+        <h2>دنیای بدون مرز...💙</h2>
+
+        <p>
+            سرویس‌های VynexaVPN را ساده، سریع و مطمئن مدیریت کن.
+            برای خرید سرویس، مشاهده سفارش‌ها و دریافت سرویس وارد سیستم VynexaVPN شو.
+        </p>
+
+        <div class="buttons">
+
+            <a class="btn btn-primary"
+               href="https://t.me/VynexaVPN_bot">
+                ورود به ربات
+            </a>
+
+            <a class="btn btn-secondary"
+               href="#services">
+                مشاهده سرویس‌ها
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SERVICES -->
+
+<section class="section" id="services">
+
+    <div class="container">
+
+        <div class="title">
+
+            <small>VYNEXAVPN SERVICES</small>
+
+            <h2>سرویس‌ها</h2>
+
+            <p>
+                سرویس موردنظر خودت را انتخاب کن
+            </p>
+
+        </div>
+
+
+        <div class="services">
+
+
+            <!-- V2RAY -->
+
+            <div class="service glass">
+
+                <div class="icon">⚡</div>
+
+                <h3>V2Ray</h3>
+
+                <div class="service-description">
+                    سرویس V2Ray با مدیریت سرویس و تمدید.
+                </div>
+
+                <div class="price">
+                    ۲۰۰,۰۰۰
+                    <span>تومان / ماه</span>
+                </div>
+
+                <div class="features">
+
+                    <div class="feature">✓ مناسب استفاده روزمره</div>
+
+                    <div class="feature">✓ حداکثر ۱۰ دستگاه</div>
+
+                    <div class="feature">✓ مدیریت و تمدید سرویس</div>
+
+                </div>
+
+                <button class="buy"
+                        onclick="buy('V2Ray')">
+                    خرید V2Ray
+                </button>
+
+            </div>
+
+
+            <!-- OPENVPN -->
+
+            <div class="service glass">
+
+                <div class="icon">🛡️</div>
+
+                <h3>OpenVPN</h3>
+
+                <div class="service-description">
+                    پلن‌های متنوع حجمی و زمانی.
+                </div>
+
+                <div class="price">
+                    ۷۰,۰۰۰
+                    <span>تومان / شروع قیمت</span>
+                </div>
+
+                <div class="features">
+
+                    <div class="feature">✓ ۱۲GB — ۷۰,۰۰۰ تومان</div>
+
+                    <div class="feature">✓ ۲۶GB — ۹۰,۰۰۰ تومان</div>
+
+                    <div class="feature">✓ ۳۵GB — ۱۱۰,۰۰۰ تومان</div>
+
+                    <div class="feature">✓ ۵۵GB — ۱۴۰,۰۰۰ تومان</div>
+
+                    <div class="feature">✓ پلن‌های بلندمدت</div>
+
+                </div>
+
+                <button class="buy"
+                        onclick="buy('OpenVPN')">
+                    مشاهده پلن‌ها
+                </button>
+
+            </div>
+
+
+            <!-- WIREGUARD -->
+
+            <div class="service glass">
+
+                <div class="icon">🔐</div>
+
+                <h3>WireGuard</h3>
+
+                <div class="service-description">
+                    سرویس WireGuard برای اتصال سریع و ساده.
+                </div>
+
+                <div class="price">
+                    در ربات
+                    <span>قیمت فعلی</span>
+                </div>
+
+                <div class="features">
+
+                    <div class="feature">✓ مدیریت سرویس</div>
+
+                    <div class="feature">✓ تمدید سرویس</div>
+
+                    <div class="feature">✓ حداکثر ۱ دستگاه</div>
+
+                </div>
+
+                <button class="buy"
+                        onclick="buy('WireGuard')">
+                    خرید WireGuard
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FEATURES -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="title">
+
+            <small>VYNEXA EXPERIENCE</small>
+
+            <h2>همه‌چیز یکجا</h2>
+
+        </div>
+
+
+        <div class="info-grid">
+
+            <div class="info glass">
+
+                <div class="info-icon">📡</div>
+
+                <h3>سرویس‌های من</h3>
+
+                <p>
+                    مشاهده سرویس‌ها، وضعیت و اطلاعات اتصال.
+                </p>
+
+            </div>
+
+
+            <div class="info glass">
+
+                <div class="info-icon">🧾</div>
+
+                <h3>سفارش‌های من</h3>
+
+                <p>
+                    دسترسی به سفارش‌های ثبت‌شده.
+                </p>
+
+            </div>
+
+
+            <div class="info glass">
+
+                <div class="info-icon">💳</div>
+
+                <h3>کیف پول</h3>
+
+                <p>
+                    مدیریت موجودی حساب کاربری.
+                </p>
+
+            </div>
+
+
+            <div class="info glass">
+
+                <div class="info-icon">🎁</div>
+
+                <h3>زیرمجموعه‌گیری</h3>
+
+                <p>
+                    دعوت دوستان و استفاده از سیستم پاداش.
+                </p>
+
+            </div>
+
+
+            <div class="info glass">
+
+                <div class="info-icon">🔔</div>
+
+                <h3>اعلان‌ها</h3>
+
+                <p>
+                    اطلاع‌رسانی‌های مربوط به سرویس و سفارش.
+                </p>
+
+            </div>
+
+
+            <div class="info glass">
+
+                <div class="info-icon">🎧</div>
+
+                <h3>پشتیبانی</h3>
+
+                <p>
+                    ارتباط با پشتیبانی VynexaVPN.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PANEL -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="title">
+
+            <small>VYNEXA PANEL</small>
+
+            <h2>پنل کاربری</h2>
+
+        </div>
+
+
+        <div class="panel glass">
+
+            <div class="panel-top">
+
+                <h3>
+                    حساب کاربری
+                </h3>
+
+                <div class="online">
+                    ● سیستم فعال
+                </div>
+
+            </div>
+
+
+            <div class="panel-grid">
+
+                <a class="panel-item"
+                   href="https://t.me/VynexaVPN_bot">
+                    <div>📡</div>
+                    <span>سرویس‌های من</span>
+                </a>
+
+
+                <a class="panel-item"
+                   href="https://t.me/VynexaVPN_bot">
+                    <div>🧾</div>
+                    <span>سفارش‌های من</span>
+                </a>
+
+
+                <a class="panel-item"
+                   href="https://t.me/VynexaVPN_bot">
+                    <div>🛒</div>
+                    <span>خرید سرویس</span>
+                </a>
+
+
+                <a class="panel-item"
+                   href="https://t.me/VynexaVPN_bot">
+                    <div>💰</div>
+                    <span>کیف پول</span>
+                </a>
+
+
+                <a class="panel-item"
+                   href="https://t.me/VynexaVPN_bot">
+                    <div>🎁</div>
+                    <span>زیرمجموعه‌گیری</span>
+                </a>
+
+
+                <a class="panel-item"
+                   href="https://t.me/VynexaVPN_bot">
+                    <div>🔔</div>
+                    <span>اعلان‌ها</span>
+                </a>
+
+
+                <a class="panel-item"
+                   href="https://t.me/VynexaVPN_bot">
+                    <div>🎧</div>
+                    <span>پشتیبانی</span>
+                </a>
+
+
+                <a class="panel-item"
+                   href="https://t.me/VynexaVPN_bot">
+                    <div>👤</div>
+                    <span>پروفایل</span>
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- REFERRAL -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="referral glass">
+
+            <h2>
+                زیرمجموعه‌گیری 🎁
+            </h2>
+
+            <p>
+                دوستانت را به VynexaVPN دعوت کن و از سیستم پاداش موجود در ربات استفاده کن.
+            </p>
+
+            <div class="ref-code">
+                مدیریت از طریق ربات VynexaVPN
+            </div>
+
+            <div style="margin-top:20px">
+
+                <a class="btn btn-primary"
+                   href="https://t.me/VynexaVPN_bot">
+                    ورود به ربات
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+    <div>
+        VynexaVPN
+    </div>
+
+    <div style="margin-top:8px">
+        دنیای بدون مرز...💙
+    </div>
+
+</footer>
+
+
+<a class="telegram"
+   href="https://t.me/VynexaVPN_bot">
+
+    <span class="dot"></span>
+
+    <span>
+        VynexaVPN
+    </span>
+
+    <span>
+        ↗
+    </span>
+
+</a>
+
+
+<script>
+
+function buy(service){
+
+    const text =
+        "برای خرید " +
+        service +
+        " وارد ربات VynexaVPN شوید.";
+
+    alert(text);
+
+    setTimeout(function(){
+
+        window.location.href =
+            "https://t.me/VynexaVPN_bot";
+
+    },500);
+
+}
+
+</script>
+
+</body>
+</html>
